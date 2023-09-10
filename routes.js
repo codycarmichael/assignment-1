@@ -29,9 +29,9 @@ function requestHandler (req,res) {
         req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
             const username = parsedBody.split('=')[1];
-            username.push(users)
+            users.push(username);
             res.statusCode = 302;
-            res.setHeaader('Location', '/users');
+            res.setHeader('Location', '/users');
             return res.end();
         });
         
